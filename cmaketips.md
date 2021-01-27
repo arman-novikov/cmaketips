@@ -21,3 +21,21 @@
 	add_library(%name%-shared SHARED $<TARGET_OBJECTS:%name%-obj>)
 	add_library(%name%-static STATIC $<TARGET_OBJECTS:%name%-obj>)
 	target_link_libraries(%targetname% %libname%)
+
+`message([STATUS|FATAL_ERROR|AUTHOR_WARNING|DEPRECATION|DEBUG] "<message>")`
+
+`set(<variable name> [OFF|ON|0|1])`
+
+`list(APPEND <variable name ['_' if local]> [<file name>.[cpp|h|...] <file name>.[cpp|h|...] ... ])`
+`usage:`
+
+	add_executable(${<target name (${PROJECT_NAME})>} <target file (main.cpp)> ${<variable name>})
+
+
+**if-else**
+
+	if(<some variable>)
+		<cmds>
+	else()
+		<cmds>
+	endif()
