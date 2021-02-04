@@ -14,6 +14,7 @@
 
 `target_link_libraries(<target name> <lib name>)`
 
+---
 
 **targeted libs**
 
@@ -21,6 +22,8 @@
 	add_library(%name%-shared SHARED $<TARGET_OBJECTS:%name%-obj>)
 	add_library(%name%-static STATIC $<TARGET_OBJECTS:%name%-obj>)
 	target_link_libraries(%targetname% %libname%)
+
+---
 
 `message([STATUS|FATAL_ERROR|AUTHOR_WARNING|DEPRECATION|DEBUG] "<message>")`
 
@@ -31,6 +34,8 @@
 
 	add_executable(${<target name (${PROJECT_NAME})>} <target file (main.cpp)> ${<variable name>})
 
+---
+
 
 **if-else**
 
@@ -39,3 +44,27 @@
 	else()
 		<cmds>
 	endif()
+
+---
+
+**environtmental variables**
+	
+`cmake -D CMAKE_CXX_COMPILER=clang++ ..`
+
+`env CXX=clang++ cmake ..`
+
+---
+
+**BUILD TYPE**
+
+`cmake -D CMAKE_BUILD_TYPE-[Debug|Release|MinSizeRel]`
+
+---
+
+**compile flags**
+
+	list(APPEND <flags> "-<fPIC>" "-<Wall>" [...])
+	if(NOT WIN32)
+		list(APPEND flags "-<Wextra>" "-Wpedantic")
+
+	target_compile_options(<target> PRIVATE ${<flags>})
