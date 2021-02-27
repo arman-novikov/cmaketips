@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
+set(PROJECT_NAME r4)
+project(${PROJECT_NAME} LANGUAGES CXX)
+
+set(USE_LIBRARY OFF)
+message(STATUS "Compile sources into a library? ${USE_LIBRARY}")
+set(BUILD_SHARED_LIBS OFF)
+list(APPEND _sources Message.hpp Message.cpp)
+
+if(USE_LIBRARY)
+	add_library(message ${_sources})
+	add_executable(${PROJECT_NAME} main.cpp)
+	target_link_libraries(${PROJECT_NAME} message)
+else()
+	add_executable(${PROJECT_NAME} main.cpp ${_sources})
+endif()
