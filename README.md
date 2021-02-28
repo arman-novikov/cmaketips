@@ -87,3 +87,11 @@
 	  COMMAND $<TARGET_FILE:cpp_test>
 	)
 `mkdir build && cd build && cmake .. && make && ctest -T memcheck`
+
+---
+
+**cmake and libpthread**
+
+	set(THREADS_PREFER_PTHREAD_FLAG ON)
+	find_package(Threads REQUIRED)
+	target_link_libraries(<target name> PRIVATE Threads::Threads)
